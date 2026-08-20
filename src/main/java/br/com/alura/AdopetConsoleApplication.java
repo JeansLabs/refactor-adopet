@@ -52,6 +52,7 @@ public class AdopetConsoleApplication {
         }
     }
 
+
     private static void listarAbrigo() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         String uri = "http://localhost:8080/abrigos";
