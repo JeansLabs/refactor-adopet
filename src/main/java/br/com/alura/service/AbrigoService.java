@@ -1,5 +1,6 @@
 package br.com.alura.service;
 
+import br.com.alura.client.ClientHttpConfiguration;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -14,10 +15,16 @@ import java.util.Scanner;
 
 public class AbrigoService {
 
+    private ClientHttpConfiguration client;
+
+    public AbrigoService(ClientHttpConfiguration client) {
+        this.client = client;
+    }
+
     public void listarAbrigo() throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
+
         String uri = "http://localhost:8080/abrigos";
-        HttpResponse<String> response = disparaRequisicaoGet(client, uri);
+        HttpResponse<String> response = client.disparaRequisicaoGet(uri);
         String responseBody = response.body();
         JsonArray jsonArray = JsonParser.parseString(responseBody).getAsJsonArray();
         System.out.println("Abrigos cadastrados:");
@@ -42,9 +49,8 @@ public class AbrigoService {
         json.addProperty("telefone", telefone);
         json.addProperty("email", email);
 
-        HttpClient client = HttpClient.newHttpClient();
         String uri = "http://localhost:8080/abrigos";
-        HttpResponse<String> response = dispararRequisicaoPost(client, uri, json);
+        HttpResponse<String> response = client.dispararRequisicaoPost(uri, json);
         int statusCode = response.statusCode();
         String responseBody = response.body();
         if (statusCode == 200) {
