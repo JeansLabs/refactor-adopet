@@ -33,7 +33,7 @@ public class AdopetConsoleApplication {
                 } else if (opcaoEscolhida == 3) {
                     executor.executeCommand(new ListarPetsDoAbrigoCommand());
                 } else if (opcaoEscolhida == 4) {
-                    petService.importarPetsDoAbrigo();
+                    executor.executeCommand(new ImportarPetsDoAbrigoCommand());
                 } else if (opcaoEscolhida == 5) {
                     break;
                 } else {
