@@ -29,7 +29,7 @@ public class AdopetConsoleApplication {
                 if (opcaoEscolhida == 1) {
                     executor.executeCommand(new ListarAbrigoCommand());
                 } else if (opcaoEscolhida == 2) {
-                    abrigoService.cadastrarAbrigo();
+                    executor.executeCommand(new CadastrarAbrigoCommand());
                 } else if (opcaoEscolhida == 3) {
                     petService.listarPetsDoAbrigo();
                 } else if (opcaoEscolhida == 4) {
